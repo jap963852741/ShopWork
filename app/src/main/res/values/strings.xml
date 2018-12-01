@@ -1,0 +1,26 @@
+<resources>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="Regist">註冊</string>
+    <string name="app_name">飲料集點</string>
+    <string name="RegistSuccess">恭喜!註冊成功</string>
+    <string name="Accounterr">無此帳號</string>
+    <string name="Passworderr">密碼錯誤請從新輸入</string>
+    <string name="NewPassworderr">新密碼輸入不一致</string>
+    <string name="ForgetPassword">忘記密碼</string>
+    <string name="Informationerr">資料有誤</string>
+    <string name="itemone">集點首頁</string>
+    <string name="lottery">抽抽樂</string>
+    <string name="passwordchange">更改密碼</string>
+    <string name="shopfunc">商家模擬</string>
+    <string name="btn_roll_game">抽抽樂</string>
+    <string name="btn_chgnge_lottery">兌換</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

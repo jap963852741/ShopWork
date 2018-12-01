@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+
+    <ImageView
+        android:id="@+id/imgRollingDice"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical|center|clip_vertical|clip_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/drinklogin" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="帳號:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtLoginAccount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="請輸入帳號" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="密碼:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="請輸入密碼"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/btnLogIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登入"/>
+    <Button
+        android:id="@+id/btnRegist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="註冊"/>
+
+    <Button
+        android:id="@+id/btnForPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="忘記密碼"/>
+
+
+</LinearLayout>

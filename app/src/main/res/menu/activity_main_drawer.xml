@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black"
+            android:title="@string/itemone" />
+        <item
+            android:id="@+id/nav_lottery"
+            android:icon="@drawable/ic_game_black"
+            android:title="@string/lottery" />
+        <item
+            android:id="@+id/nav_passwordchange"
+            android:icon="@drawable/ic_passwordchange_black"
+            android:title="@string/passwordchange" />
+        <item
+            android:id="@+id/nav_shop"
+            android:icon="@drawable/ic_shopping_black"
+            android:title="@string/shopfunc" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_history_black"
+            android:title="交易紀錄" />
+    </group>
+
+</menu>

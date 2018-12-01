@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TODO: Update blank fragment layout -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment"
+    android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgRollingDice"
+            android:layout_width="match_parent"
+            android:layout_gravity="center_vertical|center|clip_vertical|clip_horizontal"
+            android:layout_height="150dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/drinklogin" />
+
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/PassAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:textColor="@android:color/background_dark"
+            android:textIsSelectable="false"
+            android:textSize="24sp" />
+
+    </RelativeLayout >
+</LinearLayout>
+</LinearLayout>

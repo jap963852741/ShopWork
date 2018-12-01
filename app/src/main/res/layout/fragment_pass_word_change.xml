@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="請輸入舊密碼:"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtOldPassWord"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:hint="請輸入舊密碼" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="請輸入新密碼:"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/edtChangePassWord00"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="請輸入新密碼" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="再輸入新密碼:"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/edtChangePassWord01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="再輸入新密碼" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnChangePassWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="確認"
+        android:textSize="18sp" />
+
+</LinearLayout>

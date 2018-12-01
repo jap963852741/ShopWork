@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="會員編號"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edtMemberNum"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="輸入會員編號"
+            />
+
+        <Button
+            android:id="@+id/pointsure"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="查詢"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="目前現有點數:"
+            android:textColor="@color/point"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/txtNowpoint"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/point"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="+結帳金額"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/thecost"
+            android:hint="$$"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="-使用點數"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/theuseofpoint"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="●point" />
+        <Button
+            android:id="@+id/checkcost"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="計算金額"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="=總金額"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/finalcost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="0dp"
+            android:textColor="@color/colorbecare"
+            android:textSize="20sp"
+            android:hint="最後金額" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/changetopoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="確認結帳"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</LinearLayout>
