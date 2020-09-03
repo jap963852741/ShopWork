@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mysql.jdbc.Driver;
+
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 import java.sql.Connection;
@@ -29,7 +31,7 @@ import static android.support.constraint.Constraints.TAG;
 
 public class LoginActivity extends Activity {
     private String dbName = "members";
-    private String url = "jdbc:mysql://" + "127.0.0.1:3306"
+    private String url = "jdbc:mysql://" + "10.23.12.110"
             + "/" + dbName; // 構建連接mysql的字符串
     private String user = "jap123";
     private String password = "12345";
@@ -38,6 +40,7 @@ public class LoginActivity extends Activity {
 
     private EditText mEdtAccount,
             mEdtPassword;
+
 
     Inet4Address ip;
     @Override
@@ -100,17 +103,21 @@ public class LoginActivity extends Activity {
             Connection conn = null;
             try {
                 ip = (Inet4Address) Inet4Address.getLocalHost();
-                Log.e("conocnocnocnocn","ip = " + ip.toString());
+                Log.e("connection","ip = " + ip.toString());
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             }
 
             try {
+                Driver drv = new com.mysql.jdbc.Driver();
+                DriverManager.registerDriver(drv);
+                Log.e("connection","url = " + url);
+                Log.e("connection","user = " + user);
+                Log.e("connection","password = " + password);
+                Log.e("connection","getConnection");
 
-                Log.e("conocnocnocnocn","url = " + url);
-                Log.e("conocnocnocnocn","getConnection");
                 conn = DriverManager.getConnection(url, user, password);
-                Log.e("conocnocnocnocn",conn.toString());
+                Log.e("connection",conn.toString());
                     java.sql.Statement statement = conn.createStatement();
                     java.sql.Statement statement2 = conn.createStatement();
                     ResultSet account = statement.executeQuery(
