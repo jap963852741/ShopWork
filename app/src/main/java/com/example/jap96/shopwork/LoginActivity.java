@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -27,7 +29,7 @@ import static android.support.constraint.Constraints.TAG;
 
 public class LoginActivity extends Activity {
     private String dbName = "members";
-    private String url = "jdbc:mysql://" + "172.20.10.2"
+    private String url = "jdbc:mysql://" + "127.0.0.1:3306"
             + "/" + dbName; // 構建連接mysql的字符串
     private String user = "jap123";
     private String password = "12345";
@@ -37,6 +39,7 @@ public class LoginActivity extends Activity {
     private EditText mEdtAccount,
             mEdtPassword;
 
+    Inet4Address ip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,8 +98,17 @@ public class LoginActivity extends Activity {
 
             //Create and/or open a database that will be used for reading and writing.
             Connection conn = null;
+            try {
+                ip = (Inet4Address) Inet4Address.getLocalHost();
+                Log.e("conocnocnocnocn","ip = " + ip.toString());
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
 
             try {
+
+                Log.e("conocnocnocnocn","url = " + url);
+                Log.e("conocnocnocnocn","getConnection");
                 conn = DriverManager.getConnection(url, user, password);
                 Log.e("conocnocnocnocn",conn.toString());
                     java.sql.Statement statement = conn.createStatement();
