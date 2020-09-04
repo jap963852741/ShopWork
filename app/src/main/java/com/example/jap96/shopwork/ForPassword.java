@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.jap96.shopwork.util.myapplication;
+import com.mysql.jdbc.Driver;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,11 +22,6 @@ import java.sql.SQLException;
 
 
 public class ForPassword extends AppCompatActivity {
-    private String dbName = "members";
-    private String url = "jdbc:mysql://" + "172.20.10.2"
-            + "/" + dbName; // 構建連接mysql的字符串
-    private String user = "jap123";
-    private String password = "12345";
     private EditText mEdtForPassAccount,
             mEdtForPassIdentity;
     private Button mBtnForPassSure;
@@ -48,9 +46,11 @@ public class ForPassword extends AppCompatActivity {
 
 
             try {
-                conn = DriverManager.getConnection(url, user, password);
+                Driver drv = new com.mysql.jdbc.Driver();
+                DriverManager.registerDriver(drv);
+                conn = DriverManager.getConnection(myapplication.get_url(), myapplication.get_user(), myapplication.get_password());
 
-            java.sql.Statement statement = conn.createStatement();
+                java.sql.Statement statement = conn.createStatement();
                 ResultSet passw = statement.executeQuery(
                         "select * from members" +
                                 " where mb_account ='" +

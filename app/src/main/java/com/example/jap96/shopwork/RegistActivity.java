@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.jap96.shopwork.util.myapplication;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -71,7 +74,7 @@ public class RegistActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             try {
-                conn = DriverManager.getConnection(url, user, password);
+                conn = DriverManager.getConnection(myapplication.get_url(), myapplication.get_user(), myapplication.get_password());
                 Log.e(TAG, "遠程連成功!");
                 //use ipconfig not 127.0.0.1  detail in https://blog.csdn.net/cflys/article/details/73469178
             } catch (SQLException e) {

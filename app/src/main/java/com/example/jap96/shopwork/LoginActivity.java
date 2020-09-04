@@ -1,5 +1,6 @@
 package com.example.jap96.shopwork;
 
+import com.example.jap96.shopwork.util.*;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,16 +27,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 import static android.support.constraint.Constraints.TAG;
 
 
 public class LoginActivity extends Activity {
-    private String dbName = "members";
-    private String url = "jdbc:mysql://" + "10.23.12.110"
-            + "/" + dbName; // 構建連接mysql的字符串
-    private String user = "jap123";
-    private String password = "12345";
-
+    private myapplication myapplication;
     private Button mBtnLogIn, mBtnRegist, mBtnForPassword;
 
     private EditText mEdtAccount,
@@ -47,6 +44,12 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        myapplication = (myapplication) getApplication(); // 获得myapplication对象_內有全域變數mqsql
+
+//        Log.i("myapplication variable", "mysql_ip = " + myapplication.get_mysql_ip()); // 获取进程中的全局变量值，看是否是初始化值
+//        myapplication.set_mysql_ip("1.1.1.1"); // 重新设置值
+//        Log.i("myapplication variable", "mysql_ip = " + myapplication.get_mysql_ip()); // 获取进程中的全局变量值，看是否是初始化值
 
         mEdtAccount = (EditText) this.findViewById(R.id.edtLoginAccount);
         mEdtPassword = (EditText) this.findViewById(R.id.edtLoginPassword);
@@ -111,12 +114,11 @@ public class LoginActivity extends Activity {
             try {
                 Driver drv = new com.mysql.jdbc.Driver();
                 DriverManager.registerDriver(drv);
-                Log.e("connection","url = " + url);
-                Log.e("connection","user = " + user);
-                Log.e("connection","password = " + password);
+//                Log.e("connection","url = " + myapplication.get_url());
+//                Log.e("connection","user = " + myapplication.get_user());
+//                Log.e("connection","password = " + myapplication.get_password());
                 Log.e("connection","getConnection");
-
-                conn = DriverManager.getConnection(url, user, password);
+                conn = DriverManager.getConnection(myapplication.get_url(), myapplication.get_user(), myapplication.get_password());
                 Log.e("connection",conn.toString());
                     java.sql.Statement statement = conn.createStatement();
                     java.sql.Statement statement2 = conn.createStatement();
@@ -131,7 +133,7 @@ public class LoginActivity extends Activity {
                                     Password + "'");
                     account.last();     // by the https://stackoverflow.com/questions/7545820/total-number-of-row-resultset-getrow-method
                     passw.last();
-                    Log.d("123", String.valueOf(passw.getRow()));
+                    Log.d("Login_find_num", String.valueOf(passw.getRow()));
 
                     if (account.getRow() != 0) {          //have accout
                         if (passw.getRow() != 0) {         //password true
@@ -189,8 +191,8 @@ public class LoginActivity extends Activity {
 
     @Override
     protected void onResume() {
-        SharedPreferences SP = getSharedPreferences("playE",MODE_PRIVATE);
-        SP.edit().putInt("playE", 1).commit();  //set the game's pic for new one
+//        SharedPreferences SP = getSharedPreferences("playE",MODE_PRIVATE);
+//        SP.edit().putInt("playE", 1).commit();  //set the game's pic for new one
         super.onResume();
     }
 

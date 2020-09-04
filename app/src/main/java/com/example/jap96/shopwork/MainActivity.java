@@ -1,7 +1,5 @@
 package com.example.jap96.shopwork;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -10,9 +8,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.example.jap96.shopwork.util.myapplication;
+import com.mysql.jdbc.Driver;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,30 +23,20 @@ import java.sql.SQLException;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private String dbName = "members";
-    private String url = "jdbc:mysql://" + "172.20.10.2"
-            + "/" + dbName; // 構建連接mysql的字符串
-    private String user = "jap123";
-    private String password = "12345";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.e("Now_position","進入首頁");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         TextView MailOnBar = (TextView) navigationView.getHeaderView(0).findViewById(R.id.Bar_Mail);
@@ -55,12 +47,13 @@ public class MainActivity extends AppCompatActivity
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         //定義首頁
         getSupportActionBar().setTitle("集點首頁");
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.flMain,new HomeFragment());
         ft.commit();
+        Log.e("Now_position","onCreate完成");
+
     }
 
     @Override
@@ -130,16 +123,19 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 
     private void ChangeTheMailOnBar(TextView Name,TextView Mail) throws SQLException {
         Bundle bundle = getIntent().getExtras();
+
         String main_account = bundle.getString("main_account");
         String main_password = bundle.getString("main_password");
 
-
-        Connection conn = DriverManager.getConnection(url, user, password);
+        Driver drv = new com.mysql.jdbc.Driver();
+        DriverManager.registerDriver(drv);
+        Connection conn = DriverManager.getConnection(myapplication.get_url(), myapplication.get_user(), myapplication.get_password());
         java.sql.Statement statement = conn.createStatement();
         ResultSet passw = statement.executeQuery(
                 "select * from members" +
@@ -152,7 +148,6 @@ public class MainActivity extends AppCompatActivity
                 Name.setText("會員帳號:" + passw.getObject(2).toString());
                 Mail.setText(passw.getObject(5).toString());
             }
-
 
 
     }

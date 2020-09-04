@@ -1,5 +1,6 @@
 package com.example.jap96.shopwork;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -95,7 +96,7 @@ public class LotteryFragment extends Fragment {
             }).start();
 
             mBtnRollDice.setVisibility(View.GONE);
-            SharedPreferences SP = getActivity().getSharedPreferences("playE",MODE_PRIVATE);
+            SharedPreferences SP = getActivity().getSharedPreferences("playE", Context.MODE_PRIVATE);
             SP.edit().putInt("playE", 0).commit();
         }
     };
@@ -108,7 +109,7 @@ public class LotteryFragment extends Fragment {
         }
     };
     public void playbutton() {
-        SharedPreferences SP = getActivity().getSharedPreferences("playE",MODE_PRIVATE);
+        SharedPreferences SP = getActivity().getSharedPreferences("playE",Context.MODE_PRIVATE);
         int PlayButton = SP.getInt("playE",2);
 
         if(PlayButton == 0){
@@ -136,7 +137,7 @@ public class LotteryFragment extends Fragment {
                                         mCountdown.setText("");
                                         mImgRollingDice.setImageResource(R.drawable.changed);
 
-                                        SharedPreferences SP = getActivity().getSharedPreferences("picture",MODE_PRIVATE);
+                                        SharedPreferences SP = getActivity().getSharedPreferences("picture",Context.MODE_PRIVATE);
                                         SP.edit().putString("Text", mCountdown.getText().toString())
                                                  .putString("PrisePic", "8")
                                                  .apply();
@@ -160,7 +161,7 @@ public class LotteryFragment extends Fragment {
 
 
     private void getpic(){
-        SharedPreferences dd = getActivity().getSharedPreferences("picture",MODE_PRIVATE);
+        SharedPreferences dd = getActivity().getSharedPreferences("picture",Context.MODE_PRIVATE);
         String Pic = dd.getString("PrisePic","");
         String Text = dd.getString("Text","");
         if(Text != "") {
@@ -229,7 +230,7 @@ public class LotteryFragment extends Fragment {
                     break;
             }
             String pic = String.valueOf(iRand);
-            SharedPreferences SP = activity.getSharedPreferences("picture",MODE_PRIVATE);
+            SharedPreferences SP = activity.getSharedPreferences("picture",Context.MODE_PRIVATE);
             SP.edit().putString("PrisePic", pic).commit();
         }
     }

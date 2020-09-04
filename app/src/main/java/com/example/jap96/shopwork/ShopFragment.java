@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jap96.shopwork.util.myapplication;
+import com.mysql.jdbc.Driver;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -34,11 +37,7 @@ public class ShopFragment extends Fragment {
     private EditText MemberNum,Thecost,UsePoint;
     private TextView Nowpoint,FinalCost;
     private Button Nowpointsure,Checkcost,Changetopoint;
-    private String dbName = "members";
-    private String url = "jdbc:mysql://" + "172.20.10.2"
-            + "/" + dbName; // 構建連接mysql的字符串
-    private String user = "jap123";
-    private String password = "12345";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,7 +64,9 @@ public class ShopFragment extends Fragment {
     private void pointsure() throws SQLException {
         String id = MemberNum.getText().toString();
         //Create and/or open a database that will be used for reading and writing.
-        Connection conn = DriverManager.getConnection(url, user, password);
+        Driver drv = new com.mysql.jdbc.Driver();
+        DriverManager.registerDriver(drv);
+        Connection conn = DriverManager.getConnection(myapplication.get_url(), myapplication.get_user(), myapplication.get_password());
         java.sql.Statement statement = conn.createStatement();
         ResultSet account = statement.executeQuery(
                 "select * from members" +
@@ -103,7 +104,9 @@ public class ShopFragment extends Fragment {
         int subpoint = Integer.parseInt(UsePoint.getText().toString());
         int changepoint = (int) (a * 0.1 +0.5) - subpoint;  // +point
 
-        Connection conn = DriverManager.getConnection(url, user, password);
+        Driver drv = new com.mysql.jdbc.Driver();
+        DriverManager.registerDriver(drv);
+        Connection conn = DriverManager.getConnection(myapplication.get_url(), myapplication.get_user(), myapplication.get_password());
         java.sql.Statement statement = conn.createStatement();
         ResultSet account = statement.executeQuery("select * from members" +
                  " where member_id ='" +

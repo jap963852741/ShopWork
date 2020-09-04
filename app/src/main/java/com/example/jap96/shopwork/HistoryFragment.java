@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.example.jap96.shopwork.util.myapplication;
+import com.mysql.jdbc.Driver;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,10 +25,6 @@ import java.sql.SQLException;
 public class HistoryFragment extends Fragment {
 
     private String dbName = "members";
-    private String url = "jdbc:mysql://" + "172.20.10.2"
-            + "/" + dbName; // 構建連接mysql的字符串
-    private String user = "jap123";
-    private  String password = "12345";
 
     private TextView history;
     public HistoryFragment() {
@@ -47,7 +45,9 @@ public class HistoryFragment extends Fragment {
 
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection(url, user, password);
+            Driver drv = new com.mysql.jdbc.Driver();
+            DriverManager.registerDriver(drv);
+            conn = DriverManager.getConnection(myapplication.get_url(), myapplication.get_user(), myapplication.get_password());
             java.sql.Statement statement = conn.createStatement();
             java.sql.Statement statement2 = conn.createStatement();
             ResultSet password = statement.executeQuery(

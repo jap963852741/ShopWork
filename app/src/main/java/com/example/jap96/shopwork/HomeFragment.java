@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.jap96.shopwork.util.myapplication;
+import com.mysql.jdbc.Driver;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,11 +23,7 @@ import java.text.SimpleDateFormat;
  */
 public class HomeFragment extends Fragment {
 
-    private String dbName = "members";
-    private String url = "jdbc:mysql://" + "172.20.10.2"
-            + "/" + dbName; // 構建連接mysql的字符串
-    private String user = "jap123";
-    private String password = "12345";
+
 
     private TextView mEdtForPassAccount;
 
@@ -56,8 +55,10 @@ public class HomeFragment extends Fragment {
         Connection conn = null;
 
         try {
-            conn = DriverManager.getConnection(url, user, password);
-            java.sql.Statement statement = conn.createStatement();
+            Driver drv = new com.mysql.jdbc.Driver();
+            DriverManager.registerDriver(drv);
+            Log.e("connection","getConnection");
+            conn = DriverManager.getConnection(myapplication.get_url(), myapplication.get_user(), myapplication.get_password());            java.sql.Statement statement = conn.createStatement();
             ResultSet passw = statement.executeQuery(
                 "select * from members" +
                         " where mb_account ='" +
